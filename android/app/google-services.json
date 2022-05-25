@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "996543406678",
+    "project_id": "easy-build-c0900",
+    "storage_bucket": "easy-build-c0900.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:996543406678:android:b3889f082484f2c29191f7",
+        "android_client_info": {
+          "package_name": "com.example.easy_build"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "996543406678-i7gl5er7i2csi0coes72e3bego4ar7ad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBW_-prvRr7L-qq8b8ddE_OeyRAbUjiFac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "996543406678-i7gl5er7i2csi0coes72e3bego4ar7ad.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
