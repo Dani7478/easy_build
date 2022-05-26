@@ -125,6 +125,14 @@ class _ConstCalculationViewState extends State<ConstCalculationView> {
                 ),
               ),
             ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Text('This is just a rough estimates' , style: TextStyle(
+                color: Colors.deepOrange,
+                fontSize: 12,
+                fontWeight: FontWeight.w300,
+              ),),
+            )
           ],
         ),
       ),
@@ -235,34 +243,34 @@ class _ConstCalculationViewState extends State<ConstCalculationView> {
   }
 
   calculate() {
-    if (sizeSelected == '3 Marla' && workSelected == 'Grey Structure') {
+    if (sizeSelected == '3 Marla' && workSelected == 'Finishing') {
       totalCost = '4,367,400';
       print(totalCost);
-    } else if (sizeSelected == '5 Marla' && workSelected == 'Grey Structure') {
+    } else if (sizeSelected == '5 Marla' && workSelected == 'Finishing') {
       totalCost = '5,727,500';
       print(totalCost);
-    } else if (sizeSelected == '7 Marla' && workSelected == 'Grey Structure') {
+    } else if (sizeSelected == '7 Marla' && workSelected == 'Finishing') {
       totalCost = '8,700,000';
       print(totalCost);
-    } else if (sizeSelected == '10 Marla' && workSelected == 'Grey Structure') {
+    } else if (sizeSelected == '10 Marla' && workSelected == 'Finishing') {
       totalCost = '9,570,000';
       print(totalCost);
-    } else if (sizeSelected == '1 Kanal' && workSelected == 'Grey Structure') {
+    } else if (sizeSelected == '1 Kanal' && workSelected == 'Finishing') {
       totalCost = '17,272,400';
       print(totalCost);
-    } else if (sizeSelected == '3 Marla' && workSelected == 'Finishing') {
+    } else if (sizeSelected == '3 Marla' && workSelected == 'Grey Structure') {
       totalCost = '2,550,000';
       print(totalCost);
-    } else if (sizeSelected == '5 Marla' && workSelected == 'Finishing') {
+    } else if (sizeSelected == '5 Marla' && workSelected == 'Grey Structure') {
       totalCost = '3,357,500';
       print(totalCost);
-    } else if (sizeSelected == '7 Marla' && workSelected == 'Finishing') {
+    } else if (sizeSelected == '7 Marla' && workSelected == 'Grey Structure') {
       totalCost = '5,100,000';
       print(totalCost);
-    } else if (sizeSelected == '10 Marla' && workSelected == 'Finishing') {
+    } else if (sizeSelected == '10 Marla' && workSelected == 'Grey Structure') {
       totalCost = '5,610,000';
       print(totalCost);
-    } else if (sizeSelected == '1 Kanal' && workSelected == 'Finishing') {
+    } else if (sizeSelected == '1 Kanal' && workSelected == 'Grey Structure') {
       totalCost = '10,125,200';
       print(totalCost);
     }

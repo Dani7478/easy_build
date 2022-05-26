@@ -6,6 +6,7 @@ import 'package:easy_build/View/Contrector/our_design.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'contractor_form.dart';
@@ -35,40 +36,40 @@ class _ContractorHomeViewState extends State<ContractorHomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50.0),
-       child: AppBar(
-          title:Column(
-            children: [
-                 Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween, 
-                children: [
-            Text(contractorName!.toUpperCase()),
-            Row(
-              children: [
-                InkWell(
-                    onTap: () {
-                      Get.to(ProfileInformation());
-                    },
-                    child: Icon(Icons.person)),
-                SizedBox(width: 15),
-                InkWell(
-                    onTap: () {
-                      Get.to(LoginView());
-                    },
-                    child: const Text(
-                      'Logout',
-                      style: TextStyle(fontSize: 10),
-                    )),
-              ],
-            )
-          ]),
-
-          
-            ],
-          )
-          
-        ),),
+       //  appBar: PreferredSize(
+       //  preferredSize: Size.fromHeight(50.0),
+       // child: AppBar(
+       //    title:Column(
+       //      children: [
+       //           Row(
+       //          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+       //          children: [
+       //      Text(contractorName!.toUpperCase()),
+       //      Row(
+       //        children: [
+       //          InkWell(
+       //              onTap: () {
+       //                Get.to(ProfileInformation());
+       //              },
+       //              child: Icon(Icons.person)),
+       //          SizedBox(width: 15),
+       //          InkWell(
+       //              onTap: () {
+       //                Get.to(LoginView());
+       //              },
+       //              child: const Text(
+       //                'Logout',
+       //                style: TextStyle(fontSize: 10),
+       //              )),
+       //        ],
+       //      )
+       //    ]),
+       //
+       //
+       //      ],
+       //    )
+       //
+       //  ),),
         // body: Center(
         //   child: Column(
         //     mainAxisAlignment: MainAxisAlignment.center,
@@ -165,6 +166,87 @@ class _ContractorHomeViewState extends State<ContractorHomeView> {
       body: Column(
         mainAxisAlignment:MainAxisAlignment.center,
         children: [
+          Container(
+            height: 200,
+            width: double.infinity,
+            color: Colors.orange,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+              child: Column(
+                children: [
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(contractorName!.toUpperCase(), style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                        ),),
+                        Row(
+                          children: [
+                            InkWell(
+                                onTap: () {
+                                  Get.to(ProfileInformation());
+                                },
+                                child: Icon(Icons.person)),
+                            SizedBox(width: 15),
+                            InkWell(
+                                onTap: () {
+                                  Get.to(LoginView());
+                                },
+                                child: const Text(
+                                  'Logout',
+                                  style: TextStyle(fontSize: 10),
+                                )),
+                          ],
+                        )
+                      ]),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: const <Widget>[
+                          CircleAvatar(
+                            backgroundImage: AssetImage(
+                              'images/mainlogo2.png',
+                            ),
+                            backgroundColor: Colors.white,
+                            radius: 32,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'Welcome  To EasyBuild',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.actor(
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 0.4,
+                              fontSize: 24,
+                              color: Color.fromRGBO(250, 249, 249, 1),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+
+
+                ],
+              ),
+            ),
+          ),
           SizedBox(
             height: 30,
           ),
@@ -174,10 +256,10 @@ class _ContractorHomeViewState extends State<ContractorHomeView> {
               padding: const EdgeInsets.all(5),
              // mainAxisSpacing: 20,
               children: [
-                makeDashboardItem("Upload Profile ", "images/cost.jpeg", 0),
-                makeDashboardItem("Notifications", "images/design.jpeg", 1),
+                makeDashboardItem("Upload Profile ", "images/profile.jpeg", 0),
+                makeDashboardItem("Notifications", "images/notification.jpeg", 1),
                 makeDashboardItem("Appointment", "images/contractor.jpeg", 2),
-                makeDashboardItem("Our Design", "images/report.jpeg", 3),
+                makeDashboardItem("Our Design", "images/report2.jpeg", 3),
               ],
             ),
           ),

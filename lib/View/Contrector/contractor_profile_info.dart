@@ -45,20 +45,21 @@ class _ProfileInformationState extends State<ProfileInformation> {
           .where('contact', isEqualTo: contact)
           .where('name', isEqualTo: name)
           .get()
-          .then((QuerySnapshot querySnapshot) => {
-                querySnapshot.docs.forEach((doc) async {
-                  print('Fetch record');
-                  cnic = doc['cnic'];
-                  address = doc['address'];
-                  about = doc['about'];
-                  stime = doc['stime'];
-                  etime = doc['etime'];
-                  cnic = doc['cnic'];
-                  image=doc['image'].toString();
-                  setState((){});
-                  print(image);
-                }),
-              });
+          .then((QuerySnapshot querySnapshot) =>
+      {
+        querySnapshot.docs.forEach((doc) async {
+          print('Fetch record');
+          cnic = doc['cnic'];
+          address = doc['address'];
+          about = doc['about'];
+          stime = doc['stime'];
+          etime = doc['etime'];
+          cnic = doc['cnic'];
+          image = doc['image'].toString();
+          setState(() {});
+          print( base64.decode(image.toString()));
+        }),
+      });
       // print(dataList.toString());
       // print(response.length);
     } catch (e) {
@@ -71,37 +72,39 @@ class _ProfileInformationState extends State<ProfileInformation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+     // appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Column(children: [
             //________________________Photo
             SizedBox(
               height: 10,
             ),
-             Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  width: 85,
-                  height: 100,
-                  color: Colors.blueAccent,
-                  child: image != 'none'
-                      ? Image.memory(
-                          base64.decode(image.toString()),
-                          fit: BoxFit.fitHeight,
-                        )
-                      : Container(),
+            image != 'none'
+                ? Container(
+              height: 90,
+              width: 90,
+             decoration: BoxDecoration(
+               color: Colors.orange,
+               borderRadius: BorderRadius.circular(90),
+             ),
+              child: ClipOval(
+                child: Image.memory(
+                  base64.decode(image.toString()),
+                  fit: BoxFit.cover,
                 ),
               ),
-            SizedBox(
+            )
+                : Container(),
+            const SizedBox(
               height: 10,
             ),
             //_____________________Name
-            Container(
+            SizedBox(
                 height: 80,
                 child: Card(
-                  color: Colors.blueAccent,
+                  color: Colors.orange,
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: ListTile(
@@ -113,10 +116,10 @@ class _ProfileInformationState extends State<ProfileInformation> {
                 )),
 
             //_____________________Name
-            Container(
+            SizedBox(
                 height: 80,
                 child: Card(
-                  color: Colors.blueAccent,
+                  color: Colors.orange,
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: ListTile(
@@ -129,7 +132,7 @@ class _ProfileInformationState extends State<ProfileInformation> {
             Container(
                 height: 80,
                 child: Card(
-                  color: Colors.blueAccent,
+                  color: Colors.orange,
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: ListTile(
@@ -140,10 +143,10 @@ class _ProfileInformationState extends State<ProfileInformation> {
                   ),
                 )),
 
-            Container(
+            SizedBox(
                 height: 150,
                 child: Card(
-                  color: Colors.blueAccent,
+                  color: Colors.orange,
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: ListTile(
@@ -154,10 +157,10 @@ class _ProfileInformationState extends State<ProfileInformation> {
                   ),
                 )),
 
-            Container(
+            SizedBox(
                 height: 120,
                 child: Card(
-                  color: Colors.blueAccent,
+                  color: Colors.orange,
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: ListTile(
@@ -171,7 +174,7 @@ class _ProfileInformationState extends State<ProfileInformation> {
             Container(
                 height: 80,
                 child: Card(
-                  color: Colors.blueAccent,
+                  color: Colors.orange,
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: ListTile(

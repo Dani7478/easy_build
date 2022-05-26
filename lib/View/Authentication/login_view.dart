@@ -11,8 +11,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Contrector/contractor_form.dart';
 
-
-
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
 
@@ -24,9 +22,7 @@ TextEditingController emailController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-
-
- List dataList = [];
+List dataList = [];
 
 class _LoginViewState extends State<LoginView> {
   @override
@@ -102,16 +98,13 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     child: MaterialButton(
                       onPressed: () async {
-                        //  if(emailController.text.length<11)
-                        // {
-                        //   snackBar(context, 'No valid phone number', 'OK');
-                        // }
-                        // else 
-                        // {
-                        //    await getData();
-                        // }
-                         await getData();
-                      
+                        if (emailController.text.length < 11) {
+                          snackBar(context, 'Not valid phone number', 'OK');
+                        } else {
+                          await getData();
+                        }
+                        //await getData();
+
                         // await fetchData();
                       },
                       color: Colors.orange,
@@ -158,42 +151,41 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-   getData() async {
+  getData() async {
     final prefs = await SharedPreferences.getInstance();
-    String contact=emailController.text;
-    String password=passwordController.text;
-
+    String contact = emailController.text;
+    String password = passwordController.text;
+    String notice='Wrong Username or Password';
     //List dataList = [];
     try {
-   var response=  await FirebaseFirestore.instance.collection('User').
-      where('Contact', isEqualTo: contact).
-      where('password', isEqualTo: password).
-      get().then((QuerySnapshot querySnapshot) => {
-            querySnapshot.docs.forEach((doc) async{
-           
-            await prefs.setString('name',doc['name'] );
-            await prefs.setString('contact',doc['Contact'] );
-             await prefs.setString('role',doc['role'] );
-            // dataList.add(doc.data());
-           snackBar(context, 'Authenticate....', 'OK');
-           String role =doc['role'];
-           if(role.toLowerCase()=='user')
-           {
-             Get.to(UserHomeView());
-           }
-            if(role.toLowerCase()=='contractor')
-           {
-             Get.to(ContractorHomeView());
-           }
-            }),
-          });
-         // print(dataList.toString());
-         // print(response.length);
+      var response = await FirebaseFirestore.instance
+          .collection('User')
+          .where('Contact', isEqualTo: contact)
+          .where('password', isEqualTo: password)
+          .get()
+          .then((QuerySnapshot querySnapshot) => {
+                querySnapshot.docs.forEach((doc) async {
+                  notice='Welcome in Easy Build';
+                  await prefs.setString('name', doc['name']);
+                  await prefs.setString('contact', doc['Contact']);
+                  await prefs.setString('role', doc['role']);
+                  // dataList.add(doc.data());
+                 // snackBar(context, 'Authenticate....', 'OK');
+                  String role = doc['role'];
+                  if (role.toLowerCase() == 'user') {
+                    Get.to(UserHomeView());
+                  }
+                  if (role.toLowerCase() == 'contractor') {
+                    Get.to(ContractorHomeView());
+                  }
+                }),
+              });
+         snackBar(context, notice, 'OK');
+      // print(dataList.toString());
+      // print(response.length);
     } catch (e) {
-     snackBar(context, 'Wrong Contact or Password', 'OK');
+      snackBar(context, 'Wrong Contact or Password', 'OK');
       return null;
     }
   }
-
-
 }

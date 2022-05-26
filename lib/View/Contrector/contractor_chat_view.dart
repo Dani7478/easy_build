@@ -233,7 +233,11 @@ class _ContractorChatViewState extends State<ContractorChatView> {
           height: 50,
           child: Row(
             children: [
-              Expanded(flex: 1, child: Icon(Icons.image)),
+              Expanded(flex: 1, child: InkWell(
+                onTap: () async {
+                await  _imgFromGallery();
+                },
+                  child: Icon(Icons.image))),
               Expanded(
                   flex: 8,
                   child: Container(

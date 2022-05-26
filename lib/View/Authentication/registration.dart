@@ -113,7 +113,8 @@ class _Registration_ViewState extends State<Registration_View> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     TextButton(
-                      onPressed: () {
+                      onPressed: () async {
+                       await updatePassword();
                         print('Forgotted Password!');
                       },
                       child: Text(
@@ -224,6 +225,48 @@ class _Registration_ViewState extends State<Registration_View> {
     } catch (error) {
       snackBar(context, 'Something Went Wrong', "OK");
       print(error);
+    }
+  }
+
+  updatePassword() async
+  {
+
+  String id= await getId();
+  Map<String,Object> data={
+    'Contact':emailController.text,
+    'name':usernameController.text,
+    'password':passwordController.text,
+    'role':role.toString()
+
+  };
+  print('____________${id}');
+    var collection =await FirebaseFirestore.instance.collection('User');
+    collection
+        .doc(id) // <-- Doc ID where data should be updated.
+        .update(data);
+  }
+
+  getId() async
+  {
+    String? id;
+    try {
+      var response = await FirebaseFirestore.instance
+          .collection('User')
+          .where('name', isEqualTo: usernameController.text)
+          .where('Contact', isEqualTo: emailController.text)
+          .get()
+          .then((QuerySnapshot querySnapshot) => {
+        querySnapshot.docs.forEach((doc) async {
+          var documentID = doc.reference.id;
+          id=documentID;
+        }),
+      });
+      return id;
+      // print(dataList.toString());
+      // print(response.length);
+    } catch (e) {
+      snackBar(context, 'Wrong Contact or Password', 'OK');
+      return null;
     }
   }
 }
