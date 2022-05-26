@@ -137,7 +137,7 @@ class _ContractorDesignViewState extends State<ContractorDesignView> {
                         String image = doc['image'];
                         String type = doc['type'];
                         String title = doc['title'];
-                        bool _isFav = false;
+                        bool? _isFav;
                         checkFav(title, contact).then((value) {
                           _isFav = value;
 
@@ -309,7 +309,7 @@ class _ContractorDesignViewState extends State<ContractorDesignView> {
 
   postData(String name, String contact, String image, String title,
       String type) async {
-    final prefs = await SharedPreferences.getInstance();
+   // final prefs = await SharedPreferences.getInstance();
    // String? contact = await prefs.getString('contact');
 
     try {
@@ -337,20 +337,18 @@ class _ContractorDesignViewState extends State<ContractorDesignView> {
     }
   }
 
-  checkFav(String titlee, String contactt) async {
-    print('Calllinggg...');
+  checkFav(String title, String contact) async {
     bool _isFav = false;
     try {
       var response = await FirebaseFirestore.instance
           .collection('Favorite')
-          .where('title', isEqualTo: titlee)
-          .where('contact', isEqualTo: contactt)
+          .where('title', isEqualTo: title)
+          .where('contact', isEqualTo: contact)
           .get()
           .then((QuerySnapshot querySnapshot) => {
                 querySnapshot.docs.forEach((doc) async {
                   print('Has Record...');
                   _isFav = true;
-                  setState(() {});
                   //  return _isFav;
                 }),
               });

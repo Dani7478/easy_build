@@ -244,6 +244,8 @@ class _Registration_ViewState extends State<Registration_View> {
     collection
         .doc(id) // <-- Doc ID where data should be updated.
         .update(data);
+
+    snackBar(context, 'New Password : ${passwordController.text}', 'OK');
   }
 
   getId() async
